@@ -2055,6 +2055,29 @@ class Client extends \JoliCode\Slack\Api\Runtime\Client\Client
     }
 
     /**
+     * Invites external users to a channel.
+     *
+     * @param array $formParameters {
+     *
+     *     @var string $channel the ID of the public or private channel to invite user(s) to
+     *     @var string $users A comma separated list of user IDs. Up to 1000 users may be listed.
+     * }
+     *
+     * @param array $headerParameters {
+     *
+     *     @var string $token Authentication token. Requires scope: `conversations:write`
+     * }
+     *
+     * @param string $fetch Fetch mode to use (can be OBJECT or RESPONSE)
+     *
+     * @return \JoliCode\Slack\Api\Model\ConversationsInviteSharedPostResponse200|\JoliCode\Slack\Api\Model\ConversationsInviteSharedPostResponsedefault|\Psr\Http\Message\ResponseInterface|null
+     */
+    public function conversationsInviteShared(array $formParameters = [], array $headerParameters = [], string $fetch = self::FETCH_OBJECT)
+    {
+        return $this->executeEndpoint(new \JoliCode\Slack\Api\Endpoint\ConversationsInviteShared($formParameters, $headerParameters), $fetch);
+    }
+
+    /**
      * Joins an existing conversation.
      *
      * @param array $formParameters {
